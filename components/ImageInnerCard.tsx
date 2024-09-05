@@ -29,7 +29,6 @@ export const ImageInnerCard = ({
           aspectRatio: 9 / 11,
           objectFit: "fill",
           objectPosition: "center",
-          z: 10,
         }}
         layout="preserve-aspect"
 

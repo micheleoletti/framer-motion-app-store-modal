@@ -49,7 +49,13 @@ export const ExpandableCard = ({
           backgroundColor: "white",
           opacity: 1,
         }}
-        transition={transition}
+        animate={{
+          zIndex: isOpen ? 10 : 1,
+        }}
+        transition={{
+          ...transition,
+          zIndex: { delay: isOpen ? 0 : 0.3 }, // Delay z-index change when closing
+        }}
         layout
       >
         <ImageInnerCard
@@ -61,22 +67,6 @@ export const ExpandableCard = ({
           appDescription={appDescription}
           isOpen={isOpen}
         />
-
-        {/* <motion.div
-          layoutId={`content-expanded-${title}`}
-          style={{
-            color: "black",
-            backgroundColor: "white",
-            flexGrow: 0,
-            flexBasis: 0,
-            position: "absolute",
-            top: 0,
-            left: 0,
-            aspectRatio: 9 / 11,
-            width: "100%",
-            zIndex: -5,
-          }}
-        ></motion.div> */}
       </motion.div>
 
       <AnimatePresence>
@@ -96,10 +86,11 @@ export const ExpandableCard = ({
               backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
-              zIndex: 0,
               opacity: 1,
+              zIndex: 10,
             }}
             transition={transition}
+            layout
           >
             <ImageInnerCard
               imageUrl={imageUrl}
@@ -110,19 +101,6 @@ export const ExpandableCard = ({
               appDescription={appDescription}
               isOpen={isOpen}
             />
-
-            {/* <motion.div
-              layoutId={`content-expanded-${title}`}
-              style={{
-                color: "black",
-                padding: "1.25rem",
-                backgroundColor: "white",
-                flexGrow: 1,
-                zIndex: -5,
-              }}
-              // transition={{ delay: 0.3 }}
-            >
-            </motion.div> */}
           </motion.div>
         )}
       </AnimatePresence>
