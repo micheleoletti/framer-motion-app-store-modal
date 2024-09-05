@@ -9,14 +9,14 @@ export const ImageInnerCard = ({
   appIconUrl,
   appName,
   appDescription,
-}: MagicCardProps) => {
+  isOpen,
+}: MagicCardProps & { isOpen: boolean }) => {
   return (
     <motion.div
       layoutId={`inner-card-${title}`}
       style={{
         position: "relative",
         backgroundColor: "lightgray",
-        zIndex: 100,
         width: "100%",
       }}
     >
@@ -26,10 +26,13 @@ export const ImageInnerCard = ({
         src={imageUrl}
         alt={title}
         style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
+          aspectRatio: 9 / 11,
+          objectFit: "fill",
+          objectPosition: "center",
+          z: 10,
         }}
+        layout="preserve-aspect"
+
         // initial={{ opacity: 1 }}
       />
       {/* <motion.div
@@ -53,6 +56,7 @@ export const ImageInnerCard = ({
           bottom: 0,
           left: 0,
           width: "100%",
+          height: "100%",
         }}
       >
         <motion.h1

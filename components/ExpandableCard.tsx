@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  AnimatePresence,
-  LayoutGroup,
-  motion,
-  MotionProps,
-} from "framer-motion";
+import { AnimatePresence, motion, MotionProps } from "framer-motion";
 import { useState } from "react";
 import { ImageInnerCard } from "./ImageInnerCard";
 
@@ -26,6 +21,7 @@ const transition: MotionProps["transition"] = {
   type: "spring",
   damping: 20,
   stiffness: 150,
+  // duration: 25,
 };
 
 export const ExpandableCard = ({
@@ -39,21 +35,22 @@ export const ExpandableCard = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <LayoutGroup>
+    <>
       <motion.div
         layoutId={`card-${title}`}
         onClick={() => setIsOpen(true)}
-        className="flex flex-col"
         initial={{
           position: "relative",
-          minHeight: "500px",
+          aspectRatio: 9 / 11,
           width: "100%",
           borderRadius: 30,
           overflow: "hidden",
           color: "white",
-          zIndex: 95,
+          backgroundColor: "white",
+          opacity: 1,
         }}
         transition={transition}
+        layout
       >
         <ImageInnerCard
           imageUrl={imageUrl}
@@ -62,9 +59,10 @@ export const ExpandableCard = ({
           appIconUrl={appIconUrl}
           appName={appName}
           appDescription={appDescription}
+          isOpen={isOpen}
         />
 
-        <motion.div
+        {/* <motion.div
           layoutId={`content-expanded-${title}`}
           style={{
             color: "black",
@@ -74,10 +72,11 @@ export const ExpandableCard = ({
             position: "absolute",
             top: 0,
             left: 0,
+            aspectRatio: 9 / 11,
             width: "100%",
-            height: "100%",
+            zIndex: -5,
           }}
-        ></motion.div>
+        ></motion.div> */}
       </motion.div>
 
       <AnimatePresence>
@@ -92,12 +91,13 @@ export const ExpandableCard = ({
               width: "100vw",
               height: "100vh",
               borderRadius: 0,
-              // zIndex: 100,
               color: "white",
               overflow: "hidden",
+              backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
-              zIndex: 100,
+              zIndex: 0,
+              opacity: 1,
             }}
             transition={transition}
           >
@@ -108,24 +108,24 @@ export const ExpandableCard = ({
               appIconUrl={appIconUrl}
               appName={appName}
               appDescription={appDescription}
+              isOpen={isOpen}
             />
 
-            <motion.div
+            {/* <motion.div
               layoutId={`content-expanded-${title}`}
               style={{
                 color: "black",
                 padding: "1.25rem",
                 backgroundColor: "white",
                 flexGrow: 1,
-                zIndex: 90,
+                zIndex: -5,
               }}
               // transition={{ delay: 0.3 }}
             >
-              {/* this is the content */}
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         )}
       </AnimatePresence>
-    </LayoutGroup>
+    </>
   );
 };

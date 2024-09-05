@@ -186,7 +186,6 @@ export const ExpandableCard = ({
                   height: "100%",
                   objectFit: "cover",
                 }}
-                initial={{ opacity: 1 }}
               />
               <motion.div
                 style={{

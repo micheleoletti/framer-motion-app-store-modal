@@ -3,7 +3,7 @@ import { TestComponent } from "@/components/TestComponent";
 
 export default function Home() {
   return (
-    <div className="bg-slate-200 flex flex-col p-4 items-center h-screen gap-6 overflow-scroll max-w-92">
+    <div className="bg-black flex flex-col p-4 items-center gap-6 overflow-scroll max-w-92">
       {/* <MagicCard
         title="Game of the day"
         description="Fly the coolest dragons"
