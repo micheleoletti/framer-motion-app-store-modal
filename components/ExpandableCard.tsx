@@ -1,10 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion, MotionProps } from "framer-motion";
-import { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import { ImageInnerCard } from "./ImageInnerCard";
 
-export interface MagicCardProps {
+export interface MagicCardProps extends PropsWithChildren {
   title: string;
   description: string;
   imageUrl: string;
@@ -13,8 +13,6 @@ export interface MagicCardProps {
   appName: string;
   appDescription: string;
   // appLink: string;
-
-  // cardContent: React.ReactNode;
 }
 
 const transition: MotionProps["transition"] = {
@@ -31,6 +29,7 @@ export const ExpandableCard = ({
   appIconUrl,
   appName,
   appDescription,
+  children,
 }: MagicCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -67,6 +66,14 @@ export const ExpandableCard = ({
           appDescription={appDescription}
           isOpen={isOpen}
         />
+        <motion.div
+          layoutId={`card-content-${title}`}
+          layout={"position"}
+          style={{ opacity: 0 }}
+          className="text-black p-5 text-xl"
+        >
+          {children}
+        </motion.div>
       </motion.div>
 
       <AnimatePresence>
@@ -82,7 +89,7 @@ export const ExpandableCard = ({
               height: "100vh",
               borderRadius: 0,
               color: "white",
-              overflow: "hidden",
+              overflow: "scroll",
               backgroundColor: "white",
               display: "flex",
               flexDirection: "column",
@@ -101,6 +108,14 @@ export const ExpandableCard = ({
               appDescription={appDescription}
               isOpen={isOpen}
             />
+            <motion.div
+              layoutId={`card-content-${title}`}
+              layout={"position"}
+              style={{ opacity: 1 }}
+              className="text-black p-5 text-xl"
+            >
+              {children}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

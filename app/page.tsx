@@ -20,7 +20,38 @@ export default function Home() {
         appIconUrl="/app-icon.webp"
         appName="Dragonic"
         appDescription="Fairy tale game."
-      />
+      >
+        <strong>You will not believe this!</strong> <br />
+        <p>These dragons are so cool!</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+          quos.
+        </p>
+        <strong>You will not believe this!</strong> <br />
+        <p>These dragons are so cool!</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+          quos.
+        </p>
+        <strong>You will not believe this!</strong> <br />
+        <p>These dragons are so cool!</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+          quos.
+        </p>
+        <strong>You will not believe this!</strong> <br />
+        <p>These dragons are so cool!</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+          quos.
+        </p>
+        <strong>You will not believe this!</strong> <br />
+        <p>These dragons are so cool!</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+          quos.
+        </p>
+      </ExpandableCard>
 
       <ExpandableCard
         title="Test 2"
