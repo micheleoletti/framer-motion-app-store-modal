@@ -15,7 +15,7 @@ export interface MagicCardProps extends PropsWithChildren {
   // appLink: string;
 }
 
-const transition: MotionProps["transition"] = {
+export const transition: MotionProps["transition"] = {
   type: "spring",
   damping: 20,
   stiffness: 150,
@@ -38,6 +38,7 @@ export const ExpandableCard = ({
       <motion.div
         layoutId={`card-${title}`}
         onClick={() => setIsOpen(true)}
+        whileTap={{ scale: 0.97 }}
         initial={{
           position: "relative",
           aspectRatio: 9 / 11,
@@ -57,6 +58,26 @@ export const ExpandableCard = ({
         }}
         layout
       >
+        <motion.div
+          layoutId={`close-button-${title}`}
+          // layout="position"
+          style={{
+            opacity: 0,
+          }}
+          className="absolute top-4 right-4 bg-black/25 w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm z-20"
+          // className="p-2 w-10 h-10 flex items-center justify-center rounded-full bg-red-500"
+        >
+          <motion.img
+            layoutId={`close-button-icon-${title}`}
+            src="/x-icon.png"
+            alt="Close"
+            style={{
+              opacity: 0.4,
+            }}
+            className="w-4 h-4 aspect-square"
+          />
+        </motion.div>
+
         <ImageInnerCard
           imageUrl={imageUrl}
           title={title}
@@ -65,6 +86,7 @@ export const ExpandableCard = ({
           appName={appName}
           appDescription={appDescription}
           isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
         <motion.div
           layoutId={`card-content-${title}`}
@@ -99,6 +121,26 @@ export const ExpandableCard = ({
             transition={transition}
             layout
           >
+            <motion.div
+              layoutId={`close-button-${title}`}
+              // layout="position"
+              style={{
+                opacity: 1,
+              }}
+              className="absolute top-4 right-4 bg-black/25 w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm z-20"
+              // className="p-2 w-10 h-10 flex items-center justify-center rounded-full bg-red-500"
+            >
+              <motion.img
+                layoutId={`close-button-icon-${title}`}
+                src="/x-icon.png"
+                alt="Close"
+                style={{
+                  opacity: 0.4,
+                }}
+                className="w-4 h-4 aspect-square"
+              />
+            </motion.div>
+
             <ImageInnerCard
               imageUrl={imageUrl}
               title={title}
@@ -107,6 +149,7 @@ export const ExpandableCard = ({
               appName={appName}
               appDescription={appDescription}
               isOpen={isOpen}
+              setIsOpen={setIsOpen}
             />
             <motion.div
               layoutId={`card-content-${title}`}

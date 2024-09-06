@@ -1,6 +1,7 @@
+"use client";
 import { motion } from "framer-motion";
 import React from "react";
-import { MagicCardProps } from "./ExpandableCard";
+import { MagicCardProps, transition } from "./ExpandableCard";
 
 export const ImageInnerCard = ({
   imageUrl,
@@ -10,19 +11,21 @@ export const ImageInnerCard = ({
   appName,
   appDescription,
   isOpen,
-}: MagicCardProps & { isOpen: boolean }) => {
+  setIsOpen,
+}: MagicCardProps & {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}) => {
   return (
     <motion.div
       layoutId={`inner-card-${title}`}
       style={{
         position: "relative",
-        backgroundColor: "lightgray",
         width: "100%",
       }}
     >
       <motion.img
         layoutId={`image-${title}`}
-        // layout="preserve-aspect"
         src={imageUrl}
         alt={title}
         style={{
@@ -30,11 +33,8 @@ export const ImageInnerCard = ({
           objectFit: "fill",
           objectPosition: "center",
         }}
-        layout="preserve-aspect"
-
-        // initial={{ opacity: 1 }}
       />
-      {/* <motion.div
+      <motion.div
         style={{
           position: "absolute",
           top: 0,
@@ -44,7 +44,7 @@ export const ImageInnerCard = ({
           background:
             "radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5))",
         }}
-      ></motion.div> */}
+      ></motion.div>
       <motion.div
         layoutId={`content-${title}`}
         style={{
