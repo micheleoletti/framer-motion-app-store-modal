@@ -48,6 +48,7 @@ export const ExpandableCard = ({
           color: "white",
           backgroundColor: "white",
           opacity: 1,
+          flexShrink: 0,
         }}
         animate={{
           zIndex: isOpen ? 10 : 1,
@@ -104,11 +105,11 @@ export const ExpandableCard = ({
             layoutId={`card-${title}`}
             onClick={() => setIsOpen(false)}
             initial={{
-              position: "fixed",
+              position: "absolute",
               top: 0,
               left: 0,
-              width: "100vw",
-              height: "100vh",
+              width: "100%",
+              height: "100%",
               borderRadius: 0,
               color: "white",
               overflow: "scroll",

@@ -2,7 +2,7 @@ import { ExpandableCard } from "@/components/ExpandableCard";
 
 export default function Home() {
   return (
-    <div className="bg-black p-4 items-center gap-6 overflow-scroll text-white relative flex flex-col gap-4">
+    <div className="bg-black p-4 items-center gap-6 overflow-scroll text-white relative flex flex-col max-w-[400px]">
       <ExpandableCard
         title="Fiscal Fury"
         description="When hippos get mad at paperwork."

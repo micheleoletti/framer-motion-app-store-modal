@@ -42,7 +42,7 @@ export const ImageInnerCard = ({
           right: 0,
           bottom: 0,
           background:
-            "radial-gradient(circle, transparent, rgba(0, 0, 0, 0.5))",
+            "radial-gradient(circle at center top, transparent, rgba(0, 0, 0, 0.4))",
         }}
       ></motion.div>
       <motion.div
