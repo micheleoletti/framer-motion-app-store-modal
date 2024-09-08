@@ -2,11 +2,12 @@
 
 import {
   AnimatePresence,
+  LayoutGroup,
   motion,
   MotionProps,
   MotionStyle,
 } from "framer-motion";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { CardFooter } from "./CardFooter";
 import { CardTitle } from "./CardTitle";
 import { CardImage } from "./CardImage";
@@ -72,23 +73,33 @@ export const ExpandableModalCard = ({
   children,
 }: ExpandableModalCard) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [zIndex, setZIndex] = useState(10);
+
+  useEffect(() => {
+    if (isOpen) {
+      setZIndex(20);
+    } else {
+      const timer = setTimeout(() => setZIndex(10), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   return (
-    <>
+    <LayoutGroup id={imageUrl}>
       <motion.div
         className="font-sans"
-        style={closedCardStyle}
-        layoutId={`card-${title}`}
+        style={{ ...closedCardStyle, zIndex }}
+        layoutId="card"
         onClick={() => setIsOpen(true)}
         transition={springTransition}
         layout
         whileTap={{ scale: 0.98 }}
       >
         <motion.div
-          layoutId={`image-card-${title}`}
+          layoutId="image-card"
           style={{ ...imageContainerStyle, borderRadius: 30 }}
         >
-          <CardImage imageUrl={imageUrl} title={title} />
+          <CardImage className="z-10" imageUrl={imageUrl} />
 
           <CardTitle
             layout="position"
@@ -98,7 +109,7 @@ export const ExpandableModalCard = ({
           />
 
           <CardFooter
-            className="z-20"
+            className="z-10"
             title={title}
             appIconUrl={appIconUrl}
             appName={appName}
@@ -106,10 +117,7 @@ export const ExpandableModalCard = ({
           />
         </motion.div>
 
-        <CardContent
-          style={{ opacity: 0, height: "0px", padding: 0 }}
-          title={title}
-        >
+        <CardContent style={{ opacity: 0, height: "0px", padding: 0 }}>
           {children}
         </CardContent>
       </motion.div>
@@ -118,20 +126,20 @@ export const ExpandableModalCard = ({
         {isOpen && (
           <motion.div
             layout
-            style={openCardStyle}
-            layoutId={`card-${title}`}
+            style={{ ...openCardStyle, zIndex }}
+            layoutId="card"
             onClick={() => setIsOpen(false)}
             transition={springTransition}
           >
             <motion.div
-              layoutId={`image-card-${title}`}
+              layoutId={`image-card`}
               style={{ ...imageContainerStyle, borderRadius: 0 }}
             >
-              <CardImage imageUrl={imageUrl} title={title} />
+              <CardImage className="z-20" imageUrl={imageUrl} />
 
               <CardTitle
                 layout="position"
-                className="z-10"
+                className="z-20"
                 title={title}
                 subtitle={description}
               />
@@ -151,6 +159,6 @@ export const ExpandableModalCard = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </LayoutGroup>
   );
 };

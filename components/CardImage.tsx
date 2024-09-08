@@ -1,22 +1,26 @@
-import { motion } from "framer-motion";
-import { title } from "process";
+import { HTMLMotionProps, motion } from "framer-motion";
 
-interface CardImageProps {
+interface CardImageProps extends HTMLMotionProps<"img"> {
   imageUrl: string;
-  title: string;
 }
 
-export const CardImage = ({ imageUrl, title }: CardImageProps) => {
+export const CardImage = ({
+  imageUrl,
+  className,
+  ...props
+}: CardImageProps) => {
   return (
     <>
       <motion.img
-        className="w-full h-full absolute top-0 left-0 overflow-hidden"
+        className={`w-full h-full absolute top-0 left-0 overflow-hidden ${className}`}
         style={{ borderRadius: 0, aspectRatio: 9 / 11 }}
-        layoutId={`image-${title}`}
+        layoutId="card-image"
         src={imageUrl}
+        {...props}
       />
 
       <motion.div
+        layoutId="card-image-overlay"
         style={{
           position: "absolute",
           top: 0,
@@ -26,6 +30,7 @@ export const CardImage = ({ imageUrl, title }: CardImageProps) => {
           background:
             "radial-gradient(circle at center top, transparent, rgba(0, 0, 0, 0.4))",
         }}
+        className={className}
       ></motion.div>
     </>
   );

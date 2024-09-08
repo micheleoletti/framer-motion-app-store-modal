@@ -12,13 +12,9 @@ export const CardTitle = ({
   ...props
 }: CardTitleProps) => {
   return (
-    <motion.div
-      className={`${className} p-6`}
-      {...props}
-      layoutId={`card-title-${title}`}
-    >
+    <motion.div className={`${className} p-6`} {...props} layoutId="card-title">
       <motion.h1 className="text-4xl font-bold">{title}</motion.h1>
-      <motion.p className="text-sm text-white/60">{subtitle}</motion.p>
+      <motion.p className="text-white/70">{subtitle}</motion.p>
     </motion.div>
   );
 };

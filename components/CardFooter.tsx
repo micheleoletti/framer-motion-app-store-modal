@@ -1,14 +1,12 @@
 import { HTMLMotionProps, motion } from "framer-motion";
 
 interface CardFooterProps extends HTMLMotionProps<"div"> {
-  title: string;
   appIconUrl: string;
   appName: string;
   appDescription: string;
 }
 
 export const CardFooter = ({
-  title,
   appIconUrl,
   appName,
   appDescription,
@@ -16,7 +14,7 @@ export const CardFooter = ({
 }: CardFooterProps) => {
   return (
     <motion.div
-      layoutId={`card-footer-${title}`}
+      layoutId="card-footer"
       style={{
         display: "flex",
         alignItems: "center",
@@ -28,26 +26,25 @@ export const CardFooter = ({
       {...props}
     >
       <motion.img
-        layoutId={`app-icon-${title}`}
+        layoutId="app-icon"
         src={appIconUrl}
-        alt={title}
         width={42}
         height={42}
         initial={{ borderRadius: 12, overflow: "hidden" }}
       />
       <motion.div
-        layoutId={`app-info-${title}`}
+        layoutId="app-info"
         style={{ display: "flex", flexDirection: "column", gap: "0" }}
       >
         <motion.span
-          layoutId={`app-name-${title}`}
+          layoutId="app-name"
           style={{ fontWeight: "500" }}
           layout="position"
         >
           {appName}
         </motion.span>
         <motion.span
-          layoutId={`app-description-${title}`}
+          layoutId="app-description"
           initial={{ opacity: 0.6, fontSize: "0.875rem" }}
           layout="position"
         >
@@ -55,7 +52,7 @@ export const CardFooter = ({
         </motion.span>
       </motion.div>
       <motion.button
-        layoutId={`get-button-${title}`}
+        layoutId="get-button"
         initial={{
           backgroundColor: "rgba(255, 255, 255, 0.2)",
           borderRadius: "9999px",

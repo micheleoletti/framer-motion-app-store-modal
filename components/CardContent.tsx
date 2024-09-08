@@ -2,19 +2,14 @@ import { HTMLMotionProps, motion } from "framer-motion";
 
 interface CardContentProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
-  title: string;
 }
 
-export const CardContent = ({
-  children,
-  title,
-  ...props
-}: CardContentProps) => {
+export const CardContent = ({ children, ...props }: CardContentProps) => {
   return (
     <motion.div
-      layoutId={`card-content-${title}`}
+      layoutId="card-content"
       layout={"position"}
-      className="text-black text-xl p-5 bg-white"
+      className="text-black text-xl p-5 "
       {...props}
     >
       {children}
