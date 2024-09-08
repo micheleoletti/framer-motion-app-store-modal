@@ -120,7 +120,7 @@ const cardData = [
 export default function Home() {
   return (
     <>
-      <div className="bg-black p-6 gap-8 h-screen relative flex flex-col">
+      <div className="bg-black p-6 gap-8 relative flex flex-col h-[400vh] font-sans">
         <h1 className="text-white text-4xl font-bold">Latest apps</h1>
         <div className="flex flex-col gap-8">
           {cardData.map((card, index) => (

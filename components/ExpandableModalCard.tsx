@@ -34,7 +34,8 @@ const closedCardStyle: MotionStyle = {
   width: "100%",
   borderRadius: 30,
   overflow: "hidden",
-  backgroundColor: "lightgray",
+  flexShrink: 0,
+  backgroundColor: "white",
 };
 
 const openCardStyle: MotionStyle = {
@@ -45,7 +46,7 @@ const openCardStyle: MotionStyle = {
   height: "100%",
   borderRadius: 0,
   overflow: "scroll",
-  backgroundColor: "lightgray",
+  backgroundColor: "white",
 };
 
 const imageContainerStyle: MotionStyle = {
