@@ -95,10 +95,7 @@ export const ExpandableModalCard = ({
         layout
         whileTap={{ scale: 0.98 }}
       >
-        <motion.div
-          layoutId="image-card"
-          style={{ ...imageContainerStyle, borderRadius: 30 }}
-        >
+        <motion.div layoutId="image-card" style={{ ...imageContainerStyle }}>
           <CardImage className="z-10" imageUrl={imageUrl} />
 
           <CardTitle
@@ -132,8 +129,8 @@ export const ExpandableModalCard = ({
             transition={springTransition}
           >
             <motion.div
-              layoutId={`image-card`}
-              style={{ ...imageContainerStyle, borderRadius: 0 }}
+              layoutId="image-card"
+              style={{ ...imageContainerStyle }}
             >
               <CardImage className="z-20" imageUrl={imageUrl} />
 
