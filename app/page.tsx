@@ -121,7 +121,9 @@ export default function Home() {
   return (
     <>
       <div className="bg-black p-6 gap-8 relative flex flex-col h-[400vh] font-sans">
-        <h1 className="text-white text-4xl font-bold">Latest apps</h1>
+        <h1 className="text-white text-3xl font-bold">
+          Today&apos;s Highlights
+        </h1>
         <div className="flex flex-col gap-8">
           {cardData.map((card, index) => (
             <ExpandableModalCard

@@ -12,6 +12,7 @@ import { CardFooter } from "./CardFooter";
 import { CardTitle } from "./CardTitle";
 import { CardImage } from "./CardImage";
 import { CardContent } from "./CardContent";
+import { CardCloseButton } from "./CardCloseButton";
 
 export interface ExpandableModalCard extends PropsWithChildren {
   title: string;
@@ -96,6 +97,11 @@ export const ExpandableModalCard = ({
         whileTap={{ scale: 0.98 }}
       >
         <motion.div layoutId="image-card" style={{ ...imageContainerStyle }}>
+          <CardCloseButton
+            className="absolute top-4 right-4"
+            style={{ opacity: 0 }}
+          />
+
           <CardImage className="z-10" imageUrl={imageUrl} />
 
           <CardTitle
@@ -132,6 +138,11 @@ export const ExpandableModalCard = ({
               layoutId="image-card"
               style={{ ...imageContainerStyle }}
             >
+              <CardCloseButton
+                className="absolute top-4 right-4 z-30"
+                style={{ opacity: 1 }}
+              />
+
               <CardImage className="z-20" imageUrl={imageUrl} />
 
               <CardTitle
