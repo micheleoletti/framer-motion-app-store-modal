@@ -82,6 +82,7 @@ export const ExpandableModalCard = ({
         onClick={() => setIsOpen(true)}
         transition={springTransition}
         layout
+        whileTap={{ scale: 0.98 }}
       >
         <motion.div
           layoutId={`image-card-${title}`}
