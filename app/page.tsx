@@ -119,7 +119,7 @@ const cardData = [
 export default function Home() {
   return (
     <>
-      <div className="bg-black p-6 gap-8 relative flex flex-col h-[400vh] font-sans">
+      <div className="bg-black p-6 gap-8 relative flex flex-col  font-sans">
         <h1 className="text-white text-3xl font-bold">
           Today&apos;s Highlights
         </h1>
@@ -137,6 +137,16 @@ export default function Home() {
               {card.content}
             </ExpandableModalCard>
           ))}
+        </div>
+        <div className="text-white text-center text-sm opacity-20">
+          Made by{" "}
+          <a
+            className="underline"
+            href="https://github.com/micheleoletti"
+            target="_blank"
+          >
+            Mykhaylo Olefirenko
+          </a>
         </div>
       </div>
     </>
