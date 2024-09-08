@@ -1,4 +1,3 @@
-import { ExpandableCard } from "@/components/ExpandableCard";
 import { ExpandableModalCard } from "@/components/ExpandableModalCard";
 
 const cardData = [
